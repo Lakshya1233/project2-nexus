@@ -1,0 +1,44 @@
+<!-- views/login.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/style.css">
+    <title>Login</title>
+</head>
+<body>
+    <div class="background-image"></div>
+    <div class="container form-container">
+        <div class="header">
+            <h2>Login</h2>
+        </div>
+        <div id="success-message" class="success-message"></div>
+        <div id="error-message" class="error-message"></div>
+        <form action="/login" method="post">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required>
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+            <button type="submit" class="button-form">Login</button>
+        </form>
+    </div>
+
+    <script>
+        // JavaScript code to display success and error messages
+        document.addEventListener('DOMContentLoaded', function () {
+            const urlParams = new URLSearchParams(window.location.search);
+            const successParam = urlParams.get('success');
+            const errorParam = urlParams.get('error');
+
+            if (successParam === '1') {
+                document.getElementById('success-message').innerHTML = '<p>Login successful!</p>';
+            }
+
+            if (errorParam === '1') {
+                document.getElementById('error-message').innerHTML = '<p class="error-message">Invalid username or password</p>';
+            }
+        });
+    </script>
+</body>
+</html>

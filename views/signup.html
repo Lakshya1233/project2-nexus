@@ -1,0 +1,38 @@
+<!-- views/signup.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/style.css">
+    <title>Signup</title>
+</head>
+<body>
+    <div class="background-image"></div>
+    <div class="container form-container">
+        <div class="header">
+            <h2>Signup</h2>
+        </div>
+        <div id="success-message" class="success-message"></div>
+        <form action="/signup" method="post">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required>
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+            <button type="submit" class="button-form">Signup</button>
+        </form>
+    </div>
+
+    <script>
+        // JavaScript code to display success messages
+        document.addEventListener('DOMContentLoaded', function () {
+            const urlParams = new URLSearchParams(window.location.search);
+            const successParam = urlParams.get('success');
+
+            if (successParam === '1') {
+                document.getElementById('success-message').innerHTML = '<p>Signup successful! Please login.</p>';
+            }
+        });
+    </script>
+</body>
+</html>
